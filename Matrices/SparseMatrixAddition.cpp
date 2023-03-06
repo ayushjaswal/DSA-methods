@@ -13,9 +13,9 @@ private:
     int m;
     int n;
     int num;
-    element *e;
 
 public:
+    element *e;
     void create()
     {
         int p;
@@ -54,12 +54,64 @@ public:
             cout << endl;
         }
     }
+    void sumSparse(SparseMatrix s)
+    {
+        SparseMatrix *sum;
+        sum = new SparseMatrix[num + s.num];
+        sum->e = new element[num + s.num];
+        int i = 0, j = 0, k = 0;
+        while (i < num && j < s.num)
+        {
+            if (e[i].i < s.e[j].i)
+            {
+                sum->e[k++] = e[i++];
+            }
+            else if (e[i].i > s.e[j].i)
+            {
+                sum->e[k++] = s.e[j++];
+            }
+            else
+            {
+                if (e[i].j < s.e[j].j)
+                {
+                    sum->e[k] = e[i];
+                }
+                else if (e[i].j > s.e[j].j)
+                {
+                    sum->e[k] = s.e[j];
+                }
+                else
+                {
+                    sum->e[k] = s.e[i];
+                    sum->e[k++].x += e[i++].x;
+                }
+            }
+        }
+        for (; i < num; i++)
+        {
+            sum->e[k++] = e[i];
+        }
+        for (; j < num; j++)
+        {
+            sum->e[k++] = s.e[j];
+        }
+        sum->m = m;
+        sum->n = n;
+        sum->num = k;
+        sum->print();
+    }
 };
 
 int main()
 {
-    SparseMatrix s;
-    s.create();
-    s.print();
+    SparseMatrix s1, s2;
+    s1.create();
+    s2.create();
+    cout << endl;
+    s1.print();
+    cout << endl;
+    s2.print();
+    cout << endl;
+    s1.sumSparse(s2);
     return 0;
 }
