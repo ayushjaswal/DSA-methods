@@ -30,6 +30,7 @@ void Display(struct node *p)
 {
     if(p != NULL){
         cout << p->data << endl;
+        cout << p->data << endl;
         Display(p->next);
     }
 
