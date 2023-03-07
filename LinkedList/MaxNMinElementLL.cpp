@@ -84,10 +84,21 @@ int MaxElm(struct node *p)
     while( p != 0){
         if(p->data > max){
             max = p->data;
-            p = p->next;
         }
+            p = p->next;
     }
     return max;
+}
+int MinElm(struct node *p)
+{
+    int min = INT_MAX;
+    while( p != 0){
+        if(p->data < min){
+            min = p->data;
+        }
+            p = p->next;
+    }
+    return min;
 }
 int main()
 {
@@ -100,5 +111,6 @@ int main()
     cout << "Sum of Nodes: " << sum(first) << endl;
     cout << "Sum of Nodes: " << sumRecursive(first) << endl;
     cout << "Maximum Element: " << MaxElm(first) << endl;
+    cout << "Minimum Element: " << MinElm(first) << endl;
     return 0;
 }
