@@ -142,16 +142,15 @@ node *SearchRecursive(struct node *p, int key)
 }
 void insert(struct node *p, int value, int pos)
 {
+    node *t = new node;
     if (pos == 0)
     {
-        node *t = new node;
         t->data = value;
         t->next = first;
         first = t;
     }
     else
     {
-        node *t = new node;
         p = first;
         for (int i = 0; i < pos - 1; i++)
         {
