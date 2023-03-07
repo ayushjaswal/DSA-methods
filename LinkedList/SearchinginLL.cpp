@@ -106,12 +106,12 @@ int MinElm(struct node *p)
 }
 node *Search(struct node *p, int key)
 {
-    node * q;
+    node *q;
     while (p != 0)
     {
         if (p->data == key)
         {
-            //updated code for better performance
+            // updated code for better performance
             q->next = p->next;
             p->next = first;
             first = p;
