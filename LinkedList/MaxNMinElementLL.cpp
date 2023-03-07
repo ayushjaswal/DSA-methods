@@ -1,5 +1,5 @@
 #include <iostream>
-#include <climits> 
+#include <climits>
 using namespace std;
 
 struct node
@@ -81,22 +81,26 @@ int sumRecursive(struct node *p)
 int MaxElm(struct node *p)
 {
     int max = INT_MIN;
-    while( p != 0){
-        if(p->data > max){
+    while (p != 0)
+    {
+        if (p->data > max)
+        {
             max = p->data;
         }
-            p = p->next;
+        p = p->next;
     }
     return max;
 }
 int MinElm(struct node *p)
 {
     int min = INT_MAX;
-    while( p != 0){
-        if(p->data < min){
+    while (p != 0)
+    {
+        if (p->data < min)
+        {
             min = p->data;
         }
-            p = p->next;
+        p = p->next;
     }
     return min;
 }
