@@ -166,15 +166,23 @@ void insertSorted(struct node *p, int value)
 {
     struct node *q;
     q = new node;
-    while (p && p->data < value){
+    node *t;
+    t = new node;
+    while (p && p->data < value)
+    {
         q = p;
         p = p->next;
     }
-    node * t; 
-    t = new node;
-    t->data = value;
-    t->next = q->next;
-    q->next = t;
+    if(p == first){
+        t->data = value;
+        t->next = first;
+        first = t; //if the value is at first
+    }
+    else{
+        t->data = value;
+        t->next = p;
+        q->next = t; //if it is any other general value
+    }
 }
 
 int main()
@@ -184,7 +192,7 @@ int main()
     create(A, 6);
     Display(first);
     cout << endl;
-    insertSorted(first, 36);
+    insertSorted(first, 90);
     Display(first);
     return 0;
 }
