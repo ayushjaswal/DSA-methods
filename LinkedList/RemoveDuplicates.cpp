@@ -244,7 +244,7 @@ void dupliRemove(struct node * p){
             q = p->next;
         }
         else{
-            p = p->next;
+            p = q;
             q = q->next;
         }
     }
