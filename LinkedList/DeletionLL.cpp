@@ -31,7 +31,7 @@ void Display(struct node *p)
 {
     while (p != NULL)
     {
-        cout << p->data << endl;
+        cout << p->data << " ";
         p = p->next;
     }
 }
@@ -192,25 +192,32 @@ void insertSorted(struct node *p, int value)
         q->next = t; // if it is any other general value
     }
 }
-void deletefirst(struct node *p)
+
+void deleteidx(struct node *p, int idx)
 {
 
-    // deletes first node
-    p = first;
-    first = first->next;    
-    delete p;
-}
-
-void deleteidx(struct node *p, int idx){
-
     node *q;
-    for(int i = 0; i < idx; i++){
-        q = p;
-        p = p->next;
+    if (idx < 1 || idx > count(first))
+    {
+        cout << "WRONG INDEX!" << endl;
+        return;
     }
-    q ->next = p->next;
-    delete p;
-
+    if (idx == 1)
+    {
+        p = first;
+        first = first->next;
+        delete p;
+    }
+    else
+    {
+        for (int i = 0; i < idx-1; i++)
+        {
+            q = p;
+            p = p->next;
+        }
+        q->next = p->next;
+        delete p;
+    }
 }
 int main()
 {
@@ -218,7 +225,7 @@ int main()
     int A[] = {3, 5, 7, 10, 15, 56};
     create(A, 6);
     Display(first);
-    deleteidx(first, 5);
+    deleteidx(first, 6);
     cout << endl;
     Display(first);
     return 0;
