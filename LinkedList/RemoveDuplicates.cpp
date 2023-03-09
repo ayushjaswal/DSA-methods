@@ -212,7 +212,7 @@ void deleteidx(struct node *p, int idx)
     }
     else
     {
-        for (int i = 0; i < idx-1; i++)
+        for (int i = 0; i < idx - 1; i++)
         {
             q = p;
             p = p->next;
@@ -222,28 +222,35 @@ void deleteidx(struct node *p, int idx)
         delete p;
     }
 }
-bool sorted(struct node *p){
-    node * q;
+bool sorted(struct node *p)
+{
+    node *q;
     q = p->next;
-    while(q != 0){
-        if(p->data > q->data){
+    while (q != 0)
+    {
+        if (p->data > q->data)
+        {
             return false;
         }
         p = q;
-        q = p ->next;
+        q = p->next;
     }
     return true;
 }
-void dupliRemove(struct node * p){
-    node * q;
+void dupliRemove(struct node *p)
+{
+    node *q;
     q = p->next;
-    while(q != 0){
-        if(p->data == q->data){
+    while (q != 0)
+    {
+        if (p->data == q->data)
+        {
             p->next = q->next;
             delete q;
             q = p->next;
         }
-        else{
+        else
+        {
             p = q;
             q = q->next;
         }
