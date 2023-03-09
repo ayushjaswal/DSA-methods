@@ -168,6 +168,11 @@ void insertSorted(struct node *p, int value)
     q = new node;
     node *t;
     t = new node;
+    if(first == NULL){
+        t->data = value;
+        t->next = NULL;
+        first = t;
+    }
     while (p && p->data < value)
     {
         q = p;
@@ -188,11 +193,14 @@ void insertSorted(struct node *p, int value)
 int main()
 {
 
-    int A[] = {3, 5, 7, 10, 15, 56};
-    create(A, 6);
-    Display(first);
-    cout << endl;
+    // int A[] = {3, 5, 7, 10, 15, 56};
+    // create(A, 6);
+    // Display(first);
+    // cout << endl;
     insertSorted(first, 90);
+    insertSorted(first, 32);
+    insertSorted(first, 45);
+    insertSorted(first, 110);
     Display(first);
     return 0;
 }
