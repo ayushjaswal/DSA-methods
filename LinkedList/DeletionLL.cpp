@@ -34,6 +34,7 @@ void Display(struct node *p)
         cout << p->data << " ";
         p = p->next;
     }
+    cout << endl;
 }
 
 int count(struct node *p)
@@ -206,6 +207,7 @@ void deleteidx(struct node *p, int idx)
     {
         p = first;
         first = first->next;
+        cout << "Deleted Element: " << p->data << endl;
         delete p;
     }
     else
@@ -215,6 +217,7 @@ void deleteidx(struct node *p, int idx)
             q = p;
             p = p->next;
         }
+        cout << "Deleted Element: " << p->data << endl;
         q->next = p->next;
         delete p;
     }
@@ -225,8 +228,8 @@ int main()
     int A[] = {3, 5, 7, 10, 15, 56};
     create(A, 6);
     Display(first);
-    deleteidx(first, 6);
-    cout << endl;
+    deleteidx(first, 1);
+    deleteidx(first, 3);
     Display(first);
     return 0;
 }
