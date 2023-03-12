@@ -34,10 +34,21 @@ void display(struct Node *p)
     cout << endl;
 }
 
+void Rdisplay(struct Node *p)
+{
+    static int flag = 0;
+    if(p != Head || flag == 0){
+        flag = 1;
+        cout << p->data << " ";
+        Rdisplay(p->next);
+    }
+    flag = 0;
+}
+
 int main()
 {
     int A[] = {2, 3, 4, 5, 6};
     create(A, 5);
-    display(Head);
+    Rdisplay(Head);
     return 0;
 }
