@@ -72,11 +72,38 @@ void insertInto(struct Node * p, int index, int val){
     }
 }
 
+void Delete(struct Node *p, int index){
+    int x = -1, i;
+
+    if(index > Length(p) || index < 1){
+        return;
+    }
+    else{
+        if(index == 1){
+            first = first->next;
+            if(first) first->prev = NULL;
+            delete p;
+        }
+        else{
+            for(i = 0; i < index-1; i++){
+                p = p->next;
+            }
+            p->prev->next=p->next;
+            if(p->next){
+                p->next->prev = p->prev;
+            }
+            delete p;
+        }
+    }
+}
+
 int main(){
     int A[] = {10, 20, 30, 40, 50};
     create(A, 5);
-    insertInto(first, 7, 45);
+    // insertInto(first, 1, 45);
     cout << "Length: " << Length(first) << endl;
+    Delete(first, 5);
     Display(first);
+
     return 0;
 }
